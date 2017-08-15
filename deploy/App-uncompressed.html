@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BespokeManager</title>
+
+    <script type="text/javascript" src="/apps/2.0/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define('CustomApp', {
+    extend: 'Rally.app.App',
+    componentCls: 'app',
+    launch: function() {
+        var bespoke_url = "https://rally1.rallydev.com/apps/bespoke/api/v1/board/current";
+        var xmlhttp = new XMLHttpRequest();
+        var response;
+        
+        xmlhttp.onreadystatechange = function() {
+			if ( xmlhttp.readyState == 4 && xmlhttp.status == 200 ) {
+				response = xmlhttp.responseXML;
+			}
+		};
+		
+		//TODO - Figure out the supported way to delete Bespoke for the Team Board
+		xmlhttp.open( "DELETE", bespoke_url, false );
+		xmlhttp.send();
+		
+		console.log( response );
+    }
+});
+
+
+            Rally.launchApp('CustomApp', {
+                name:"BespokeManager",
+	            parentRepos:""
+            });
+
+        });
+    </script>
+
+
+
+    <style type="text/css">
+        .app {
+  /* Add app styles here */
+}
+
+    </style>
+</head>
+<body>
+</body>
+</html>

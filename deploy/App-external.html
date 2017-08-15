@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BespokeManager</title>
+
+    <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.0/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){var bespoke_url="https://rally1.rallydev.com/apps/bespoke/api/v1/board/current",xmlhttp=new XMLHttpRequest,response;xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status&&(response=xmlhttp.responseXML)},xmlhttp.open("DELETE",bespoke_url,!1),xmlhttp.send(),console.log(response)}});
+
+            Rally.launchApp('CustomApp', {
+                name:"BespokeManager",
+	            parentRepos:""
+            });
+
+        });
+    </script>
+
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+</body>
+</html>
