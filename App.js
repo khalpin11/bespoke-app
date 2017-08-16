@@ -38,7 +38,7 @@ Ext.define('CustomApp', {
 		};
 		
 		// Retrieve the current Bespoke for the Team Board
-		var bespoke_url = "https://rally1.rallydev.com/apps/bespoke/api/v1/board/current";
+		var bespoke_url = "/apps/bespoke/api/v1/board/current";
 		xmlhttp.open( "GET", bespoke_url, true );
 		xmlhttp.send();
 	},
@@ -62,7 +62,7 @@ Ext.define('CustomApp', {
 		};
 		
 		// Update Bespoke
-		var bespoke_url = "https://rally1.rallydev.com/apps/bespoke/api/v1/board/" + bespokeId;
+		var bespoke_url = "/apps/bespoke/api/v1/board/" + bespokeId;
 		xmlhttp.open( "PATCH", bespoke_url, true );
 		xmlhttp.setRequestHeader( "content-type", "application/json" );
 		xmlhttp.send( JSON.stringify( baseBespoke ) );
