@@ -3,11 +3,11 @@
 <head>
     <title>BespokeManager</title>
 
-    <script type="text/javascript" src="/apps/2.0/sdk.js"></script>
+    <script type="text/javascript" src="/apps/2.1/sdk.js"></script>
 
     <script type="text/javascript">
         Rally.onReady(function () {
-                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){var bespoke_url="https://rally1.rallydev.com/apps/bespoke/api/v1/board/current",xmlhttp=new XMLHttpRequest,response;xmlhttp.onreadystatechange=function(){4==xmlhttp.readyState&&200==xmlhttp.status&&(response=xmlhttp.responseXML)},xmlhttp.open("DELETE",bespoke_url,!1),xmlhttp.send(),console.log(response)}});
+                var app=null;Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",items:[{xtype:"rallybutton",id:"reset-team-board-quick-filters-button",text:"Reset Team Board Quick Filters",handler:function(){app.resetTeamBoardQuickFilters()},margin:"5px"},{xtype:"label",id:"reset-team-board-quick-filters-label",text:"",margin:"5px"}],launch:function(){app=this},resetTeamBoardQuickFilters:function(){app.down("#reset-team-board-quick-filters-button").setDisabled(!0),app.down("#reset-team-board-quick-filters-label").setText("Processing...");var xmlhttp=new XMLHttpRequest,callback=app.createNewBespoke;xmlhttp.onreadystatechange=function(){4==this.readyState&&200==this.status&&callback(JSON.parse(this.responseText))};var bespoke_url="https://rally1.rallydev.com/apps/bespoke/api/v1/board/current";xmlhttp.open("GET",bespoke_url,!0),xmlhttp.send()},createNewBespoke:function(baseBespoke){var bespokeId=baseBespoke.Id;baseBespoke.Filters.QuickFilters=[],delete baseBespoke.CreatedAt,delete baseBespoke.UpdatedAt,delete baseBespoke.IsView;var xmlhttp=new XMLHttpRequest,createNewBespokeCallback=app.patchBespokeResponse;xmlhttp.onreadystatechange=function(){4==this.readyState&&200==this.status&&createNewBespokeCallback(JSON.parse(this.responseText))};var bespoke_url="https://rally1.rallydev.com/apps/bespoke/api/v1/board/"+bespokeId;xmlhttp.open("PATCH",bespoke_url,!0),xmlhttp.setRequestHeader("content-type","application/json"),xmlhttp.send(JSON.stringify(baseBespoke))},patchBespokeResponse:function(bespokePatchResponse){app.down("#reset-team-board-quick-filters-button").setDisabled(!1),app.down("#reset-team-board-quick-filters-label").setText("Done!")}});
 
             Rally.launchApp('CustomApp', {
                 name:"BespokeManager",
@@ -19,7 +19,7 @@
 
 
     <style type="text/css">
-        
+        .app{font-size:14px}
     </style>
 </head>
 <body>
