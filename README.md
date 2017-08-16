@@ -1,13 +1,10 @@
-BespokeManager
+bespoke-manager
 =========================
 
 ## Overview
 
+![Title](assets/app_screenshot.png)
 
-## License
+This app helps manage your Bespoke preference for CA Agile Central. The primary use case is in working with Agile Central Support to address an issue where your Bespoke preferences have become invalid or corrupted.
 
-BespokeManager is released under the MIT license.  See the file [LICENSE](./LICENSE) for the full text.
-
-##Documentation for SDK
-
-You can find the documentation on our help [site.](https://help.rallydev.com/apps/2.0/doc/)
+Please let me know if you have more use cases for this tool to aid customer issues or streamline support. 
