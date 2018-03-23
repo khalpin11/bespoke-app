@@ -12,7 +12,8 @@ Please let me know if you have more use cases for this tool to aid customer issu
 ## How to add this into CA Agile Central:
 
 1. Create a new HTML custom app.
-  1.1 Settings gear in the top right of your dashboard -> Add app -> search for "html" -> click on the add button right below "Custom HTML"
+
+1.1 Settings gear in the top right of your dashboard -> Add app -> search for "html" -> click on the add button right below "Custom HTML"
 
 2. Paste the HTML code from https://github.com/khalpin11/bespoke-app/raw/master/deploy/App.html into the HTML section of the new app which was just created at the bottom of your dashboard
 
